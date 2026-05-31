@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #6366f1;
+  --color-primary-dark: #4f46e5;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-bg: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Mobile-optimized scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+
+/* Toast animation */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.toast-enter { animation: slideUp 0.3s ease-out; }
+
+/* Progress bar animation */
+@keyframes fillBar {
+  from { width: 0; }
+}
+.progress-fill { animation: fillBar 0.6s ease-out; }
+
+/* Tag badges */
+.tag-common { background: #dbeafe; color: #1e40af; }
+.tag-required { background: #fef3c7; color: #92400e; }
+.tag-difficult { background: #fce4ec; color: #c62828; }
+
+/* Roadmap node */
+.roadmap-node {
+  position: relative;
+}
+.roadmap-node::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  width: 2px;
+  height: 20px;
+  background: #e2e8f0;
+}
+.roadmap-node:last-child::after { display: none; }
+.roadmap-node.completed::after { background: #10b981; }
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
